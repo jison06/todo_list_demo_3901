@@ -1,0 +1,8 @@
+<% if current_user %>
+  <div class="welcome">Welcome to welcome#index <%= current_user.email %></div>
+  <%= link_to "List Todos", user_todos_path(current_user.id) %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <div class="welcome">Welcome to welcome#index</div>
+  <%= link_to "Sign up", new_user_registration_path %>
+<% end %>

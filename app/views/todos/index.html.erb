@@ -1,0 +1,15 @@
+<% if @todos.empty? %>
+  <p>There are no todos</p>
+  <p><%= link_to "Create a todo", new_user_todo_path %></p>
+<% else %>
+  <% @todos.each do |todo| %>
+    <div> todo:
+      <p><%= todo.id %></p>
+      <p><%= todo.title %></p>
+      <p><%= todo.description %></p>
+      <p><%= todo.completion_status ? "Completed" : "Incomplete" %></p>
+      <p><%= link_to "Edit", edit_user_todo_path(current_user, todo.id) %></p>
+      <p><%= link_to "Delete", user_todo_path(current_user, todo.id), data: {turbo_method: :delete} %></p>
+    </div>
+  <% end %>
+<% end %>
